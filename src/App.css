@@ -1,11 +1,11 @@
 body {
-  background-color: beige;
+  background-color: black;
 }
 
 .Container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px; 
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px; 
   padding: 16px; 
   margin-top: -20px;
   justify-items: center;
@@ -18,7 +18,7 @@ body {
   overflow: hidden; 
   transition: transform 0.2s;  
   background-color: white;
-  height: 350px; 
+  height: 430px; 
   display: flex; 
   flex-direction: column; 
   justify-content: space-between; 
@@ -54,8 +54,16 @@ body {
   border-radius: 20px; 
   font-size: 16px; 
   margin-top: -10px;
+  margin-right: 10px;
 }
-
+.profile {
+  width: 48px; 
+  height: auto; 
+  margin-top: -10px;
+  margin-left: 10px; 
+  border-radius: 50%;
+  background-color: white; 
+}
 .movie-title {
   text-align: center;
   font-size: 18px; 
@@ -69,9 +77,49 @@ body {
 }
 
 .error {
+  color: red;
   font-size: 30px;
   font-weight: bold;
   text-align: center;
-  grid-column: span 2; 
+  grid-column: span 6; 
   margin-top: 20px; 
+}
+.load-more-button {
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer;
+  font-size: 16px; 
+  transition: background-color 0.3s; 
+  margin: 20px auto; 
+  display: block; 
+}
+
+.load-more-button:hover {
+  background-color: #0056b3;
+}
+
+.load-more-button:disabled {
+  background-color: #cccccc; 
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) { 
+  .Container {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+@media (max-width: 480px) { 
+  .Container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 360px) { 
+  .Container {
+    grid-template-columns: 1fr; 
+  }
 }
