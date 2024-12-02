@@ -3,10 +3,14 @@ import './Modal.css';
 
 const Modal = ({ movie, onClose }) => {
     const [isVisible, setIsVisible] = useState(false);
+    const [cast, setCast] = useState([]);
 
     useEffect(() => {
-        setIsVisible(true); 
-    }, []);
+        setIsVisible(true);
+        if (movie.Actors) {
+            setCast(movie.Actors.split(", ")); 
+        }
+    }, [movie]);
 
     const handleClose = () => {
         setIsVisible(false);
@@ -21,8 +25,10 @@ const Modal = ({ movie, onClose }) => {
                 <img src={movie.Poster} alt={movie.Title} className="modal-poster" />
                 <p><strong>Year:</strong> {movie.Year}</p>
                 <p><strong>Genre:</strong> {movie.Genre}</p>
-                <p><strong>Plot:</strong> {movie.Plot}</p>
-                <p><strong>Ratings:</strong> ⭐{movie.imdbRating}</p>
+                <p><strong>Cast:</strong> {cast.length > 0 ? cast.join(", ") : "N/A"}</p>
+                <p><strong>Synopsis:</strong> {movie.Plot}</p>
+                <p><strong>Ratings:</strong> ⭐{movie.imdbRating} /10</p>
+                
             </div>
         </div>
     );

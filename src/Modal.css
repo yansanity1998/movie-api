@@ -32,13 +32,13 @@
     border: none;
     font-size: 20px; 
     cursor: pointer;
-    color: #ff4d4d; 
+    color: rgb(22, 151, 202); 
 }
 
 .modal-title {
     font-size: 24px;
     margin-bottom: 10px;
-    color: red; 
+    color: rgb(22, 151, 202); 
 }
 
 .modal-poster {
@@ -56,7 +56,7 @@
 .ModalContent p strong{
     font-size: 16px; 
     margin: 4px 0; 
-    color: red; 
+    color: rgb(22, 151, 202); 
 }
 
 @keyframes zoomInBounce {
