@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
-import Modal from "./Modal"; 
+import Modal from "./ModalMovie"; 
 
 const API_key = "3a67b468"; 
 const base_url = "https://www.omdbapi.com/";

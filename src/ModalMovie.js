@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Modal.css'; 
+import './ModalMovie.css'; 
 
 const Modal = ({ movie, onClose }) => {
     const [isVisible, setIsVisible] = useState(false);
