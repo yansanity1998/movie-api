@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import Movie from "./Movie";
-import Modal from "./ModalMovie"; 
+import ModalMovie from "./ModalMovie"; 
 
 const API_key = "3a67b468"; 
 const base_url = "https://www.omdbapi.com/";
@@ -75,7 +75,7 @@ const App = () => {
       </div>
 
       {selectedMovie && (
-        <Modal movie={selectedMovie} onClose={closeModal} />
+        <ModalMovie movie={selectedMovie} onClose={closeModal} />
       )}
 
       {filteredMovies.length > 0 && !searchTerm && (

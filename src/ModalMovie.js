@@ -25,10 +25,10 @@ const Modal = ({ movie, onClose }) => {
                 <img src={movie.Poster} alt={movie.Title} className="modal-poster" />
                 <p><strong>Year:</strong> {movie.Year}</p>
                 <p><strong>Genre:</strong> {movie.Genre}</p>
+                <p><strong>Duration:</strong> ⏳{movie.Runtime ? movie.Runtime : "N/A"}</p>
                 <p><strong>Cast:</strong> {cast.length > 0 ? cast.join(", ") : "N/A"}</p>
                 <p><strong>Synopsis:</strong> {movie.Plot}</p>
                 <p><strong>Ratings:</strong> ⭐{movie.imdbRating} /10</p>
-                
             </div>
         </div>
     );
