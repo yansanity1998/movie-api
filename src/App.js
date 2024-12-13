@@ -8,35 +8,48 @@ const base_url = "https://www.omdbapi.com/";
 
 const App = () => {
   const [movieData, setData] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null); 
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const fetchMovies = (page = 1) => {
+  const fetchMovies = async (page = 1) => {
     const searchTerms = ["action", "comedy", "drama", "thriller", "horror"];
     const randomTerm = searchTerms[Math.floor(Math.random() * searchTerms.length)];
     const url = `${base_url}?apikey=${API_key}&s=${randomTerm}&type=movie&page=${page}`;
     
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        if (data.Search) {
-          setData(prevData => [...prevData, ...data.Search]); 
-        } else {
-          setData([]); 
-        }
-      })
-      .catch(err => console.error(err));
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.Search) {
+  
+        const detailedMovies = await Promise.all(
+          data.Search.map(async (movie) => {
+            const detailRes = await fetch(`${base_url}?apikey=${API_key}&i=${movie.imdbID}`);
+            const detailData = await detailRes.json();
+            return {
+              ...movie,
+              imdbRating: detailData.imdbRating, 
+              Year: detailData.Year, 
+            };
+          })
+        );
+        setData((prevData) => [...prevData, ...detailedMovies]);
+      } else {
+        setData([]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
     fetchMovies();
-  }, []); 
+  }, []);
 
   const fetchMovieDetails = (id) => {
-    fetch(`${base_url}?apikey=${API_key}&i=${id}`) 
+    fetch(`${base_url}?apikey=${API_key}&i=${id}`)
       .then(res => res.json())
       .then(data => {
-        setSelectedMovie(data); 
+        setSelectedMovie(data);
       })
       .catch(err => console.error(err));
   };
@@ -52,7 +65,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="search-container"> 
-        <img src="bilibili.png" alt="Logo" className="logo" />
+        <a href='App.js'><img src="bilibili.png" alt="Logo" className="logo" /></a>
         <input
           type="text"
           placeholder="Search for a movie..."
