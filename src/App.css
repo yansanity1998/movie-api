@@ -162,5 +162,14 @@ body {
   .Container {
     grid-template-columns: 1fr;
   }
- 
+  .Movie{
+    height: auto;
+    width: 90%
+  }
+}
+@media (max-width: 320px) {
+  .Container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 }
