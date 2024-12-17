@@ -65,7 +65,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="search-container"> 
-        <a href='App.js'><img src="bilibili.png" alt="Logo" className="logo" /></a>
+        <a href='App.js'><img src="bilibili.png" alt="Logo" className="logo"/></a>
         <input
           type="text"
           placeholder="Search for a movie..."
